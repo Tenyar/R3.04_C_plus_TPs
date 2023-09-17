@@ -17,6 +17,7 @@ void affichageTest(int val, int min, int max){
     << " MIN : " << entierC->getMin() << endl
     << " MAX : " << entierC->getMax() << endl << endl;
 
+
     cout << "Test de getVal()" <<  endl
          << "Resultat attendue : " << val << endl
          << "Resultat obtenue : " << entierC->getVal() << endl
@@ -32,11 +33,6 @@ void affichageTest(int val, int min, int max){
          << "Resultat obtenue : " << entierC->getMax() << endl
          << (entierC->getMax()==max ? "Succes" : "Echec") << endl << endl;
 
-    entierC->setVal(0);
-    cout << "Test de setVal(0)" <<  endl
-         << "Resultat attendue : " << "0" << endl
-         << "Resultat obtenue : " << entierC->getVal()  << endl
-         << (entierC->getVal()==0 ? "Succes" : "Echec") << endl << endl;
 
     entierC->setMin(-5);
     cout << "Test de setMax(-5)" <<  endl
@@ -49,6 +45,43 @@ void affichageTest(int val, int min, int max){
          << "Resultat attendue : " << "20" << endl
          << "Resultat obtenue : " << entierC->getMax()  << endl
          << (entierC->getMax()==20 ? "Succes" : "Echec") << endl << endl;
+
+    entierC->setVal(0);
+    cout << "Test de setVal(0)" <<  endl
+         << "Resultat attendue : " << "0" << endl
+         << "Resultat obtenue : " << entierC->getVal()  << endl
+         << (entierC->getVal()==0 ? "Succes" : "Echec") << endl << endl;
+
+
+    cout << "Exception val < min : " << endl;
+    try {
+        entierC->setVal((-100));
+        cout << "Echec : pas de exception levee)" << endl << endl;
+    }
+    catch (char const * erreur) {
+        cout << "Succes : exception levee : " << erreur << endl << endl;
+    }
+
+
+    cout << "Exception min > val : " << endl;
+    try {
+        entierC->setMin(100);
+        cout << "Echec : pas de exception levee)" << endl << endl;
+    }
+    catch (char const * erreur) {
+        cout << "Succes : exception levee : " << erreur << endl << endl;
+    }
+
+
+    cout << "Exception max < val : " << endl;
+    try {
+        entierC->setMax(-100);
+        cout << "Echec : pas de exception levee)" << endl << endl;
+    }
+    catch (char const * erreur) {
+        cout << "Succes : exception levee : " << erreur << endl << endl;
+    }
+
 
     cout << "Test de saisir()" << endl;
     entierC->saisir();

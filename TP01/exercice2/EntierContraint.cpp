@@ -24,7 +24,7 @@ int EntierContraint::getVal() const{
 };
 
 void EntierContraint::setVal(int val2){
-    if  (val2 > m_max){
+    if  (val2 > m_max || val2 < m_min){
 
         this->m_val = VAL_DEF;
         throw "val is greater than max";
