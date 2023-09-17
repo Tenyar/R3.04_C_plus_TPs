@@ -10,13 +10,17 @@ class EntierContraint {
 public:
     
     // A COMPLETER
-    EntierContraint(int valeur, int min, int max);
+    EntierContraint(int valeur = VAL_DEF, int min = MIN_DEF, int max = MAX_DEF);
 
-    int getMin();
-    int getMax();
-    int getVal();
+    int getMin() const; // const = non modifiable (cette fonction ne modifie rien)
+    int getMax() const;
+    int getVal() const;
 
-    int setVal(int val);
+    void setVal(int val2);
+
+    void setMin(int min2);
+
+    void setMax(int max2);
 
     void saisir(istream & entree = cin);
 
@@ -25,9 +29,9 @@ public:
 private:
 
     // A COMPLETER
-    int min;
-    int max;
-    int val;
+    int m_min;
+    int m_max;
+    int m_val;
 
 
 
