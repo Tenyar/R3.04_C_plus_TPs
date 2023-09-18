@@ -47,22 +47,25 @@ Groupe::Groupe(const Groupe& group){
 }
 
 Groupe& Groupe::operator=(const Groupe& group){
+    // On duplique les personnes du groupe affecter à l'objet courant qui 'subis' l'affectation.
     for (int i = 0; i < group.m_effectif.size(); ++i) {
         this->addPersonne(group.m_effectif.at(i)->getNom());
     }
+    // Dupliquation de l'intitulé.
+    this->m_intitule = group.m_intitule;
+
+    // retourne un pointeur vers l'objet courant
+    return *this;
 }
 
 Groupe::~Groupe(){
     cout << " Suppression de l'objet !" << endl;
-    // éfface les objets pointé du tableau.
+    // éfface les objets pointé du tableau (les personnes).
     for (int i = 0; i < this->m_effectif.size(); ++i) {
         delete(this->m_effectif.at(i));
     }
-    // VIde le tableau (il n'est plus pointé).
+    // Vide le tableau (il n'est plus pointé).
     m_effectif.clear();
-
-    for (int i = 0; i < this->m_intitule.size(); ++i) {
-        delete(this->m_intitule.at(i));
-    }
+    //  effacer le contenu de la chaîne de caractères
     m_intitule.clear();
 }
