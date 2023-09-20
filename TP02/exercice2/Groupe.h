@@ -20,7 +20,7 @@ public:
 
 private:
     std::string m_intitule;
-    std::vector<Personne*> m_effectif;           // un Groupe est composé de Personnes
+    std::vector<Personne*> m_effectif;  // un Groupe est composé de Personnes
 };
 
 #endif /* GROUPE_H */

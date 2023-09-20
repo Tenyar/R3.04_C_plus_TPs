@@ -24,10 +24,14 @@ void afficherTest(){
 
     cout << "Test lecture de la valeur d'un entier : ";
     cin >> ec1;
-    cout << endl << endl;
+    cout << ec1.getVal() << endl << endl;
+
+    cout << "test avant affect ec1 a un int : " << ec1 << " and " << ec1.getMin() << endl << endl;
+    // Marche car il y à les autres paramètres par défaut
     // premier paramètre 'val' = 5 soit = i et le reste sont les valeurs par défaut.
     ec1 = i;
-    cout << "test affect ec1 à un int : " << ec1 << endl << endl;
+    // donc tout est redéfinie et le min et max change de l'init tout en haut pour devenir les valeurs par défaut.
+    cout << "test affect ec1 a un int : " << ec1 << " and " << ec1.getMin() << endl << endl;
 
 }
 

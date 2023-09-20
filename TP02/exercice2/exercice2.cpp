@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
     // Au début, pas de Groupes ni de Personnes
-    cout << "-------- Aucun Groupe créé --------" << endl;
+    cout << "-------- Aucun Groupe cree --------" << endl;
     Personne::afficheNbInstances();
 
     // On crée le groupe A et on en y ajoute 3 Personnes : Emmanuel, Brigitte, Edouard
@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     groupeA->addPersonne("Brigitte");
     groupeA->addPersonne("Edouard");
     // On affiche les groupes et le nombre de Personnes
-    cout << "-------- Groupe A créé --------" << endl;
+    cout << "-------- Groupe A cree --------" << endl;
     groupeA->affiche();
     Personne::afficheNbInstances();
 
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     // on change le nom de la 2ème personne de Brigitte en Line
     groupeB->setNomPersonne(1, "Line");
     // On affiche les groupes et le nombre de Personnes
-    cout << "-------- Groupe B créé --------" << endl;
+    cout << "-------- Groupe B cree --------" << endl;
     groupeA->affiche();
     groupeB->affiche();
     Personne::afficheNbInstances();
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     groupeC->setIntitule("C");
     groupeC->setNomPersonne(2, "Francois");
     // On affiche les groupes et le nombre de Personnes
-    cout << "-------- Groupe C créé --------" << endl;
+    cout << "-------- Groupe C cree --------" << endl;
     groupeA->affiche();
     groupeB->affiche();
     groupeC->affiche();
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
     delete groupeB;
     delete groupeC;
     // On affiche le nombre de Personnes
-    cout << "-------- Groupes supprimés --------" << endl;
+    cout << "-------- Groupes supprimes --------" << endl;
     Personne::afficheNbInstances();
 
     return 0;
