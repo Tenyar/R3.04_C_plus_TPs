@@ -42,6 +42,11 @@ void Point::setY(int y) {
     this->m_y = y;
 }
 
+    bool Point::operator < (const Point &p) const{
+    // Aucune des 2 coordonnées de this(Point courant) ne doit être inférieure a P2 (&p).
+    return this->getX() < p.getX() || this->getY() < p.getY();
+}
+
 void Point::saisir(std::istream & entree) {
     string nom;
     int x,y;

@@ -56,7 +56,7 @@ template <class T>
 
 template <class T>
 void ObjetContraint<T>::setVal(const T & val) {
-    if(val < m_min || val >m_max){
+    if(val < m_min || m_max < val){
         throw domain_error("Val hors de l'intervalle Min / Max"); // report error of (domain in the mathematical sense).
     }
     this->m_val = val; // On doit quand même affecter l'erreur à la variable une fois l'exception levée.

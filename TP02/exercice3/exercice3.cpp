@@ -26,15 +26,38 @@ void afficherTest(){
     cout << "test avant affect ec1 a un int : " << ec1 << " and " << ec1.getVal() << endl << endl;
     // won't work if there isn't default values so 'i' will replace val but not min and max.
     // or since it's a generic model we need to overload (surcharger) the '=' operator and redefine it to our liking.
-    ec1 = i+1;
+    ec1 = i+10;
     cout << "test affect ec1 a un int : " << ec1 << endl << endl;
+}
 
+void pointTest(){
+    Point p_origin,p1,p2;
+    cout << "Saisir les coordonnees du point p1 :" << endl;
+    p1.saisir();
+
+    while(p2 < p1){
+        cout << "Saisir les coordonnees du point p2 >= p1 :" << endl;
+        p2.saisir();
+    }
+
+    cout << "Saisir les coordonnees du point p_origin :" << endl;
+    p_origin.saisir();
+
+    try {
+        // Avec le setteur setVal vérifie si le point est bien dans le rectangle
+        ObjetContraint<Point> Origine(p_origin, p1,p2);
+        cout << "Le point p_origin" << p_origin.getNom() << " est bien a l'interieure du rectangle [" <<
+        p1.getNom() << ", " << p2.getNom() << "]" << endl;
+    }catch (domain_error & exception){// référence sur le domain_error
+        cout << "Le point p_origin" << p_origin.getNom() << " n'est pas a l'interieure du rectangle [" <<
+             p1.getNom() << ", " << p2.getNom() << "]" << endl;
+    }
 }
 
 int main(int argc, char** argv) {
 
     // A COMPLETER : Testez ici le template ObjetContraint<T>
-    afficherTest();
-    return 0;
+    pointTest();
+    return EXIT_SUCCESS;
 }
 
