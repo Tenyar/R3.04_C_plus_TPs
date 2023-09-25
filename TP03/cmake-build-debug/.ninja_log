@@ -1,0 +1,5 @@
+# ninja log v5
+455	527	1695656290451185103	exercice1	59e7e4be7b8520f8
+2	336	1695655495600186159	CMakeFiles/exercice1.dir/exercice1/Exercice1.cpp.o	58f4bc983afc2a8e
+0	8	0	clean	f528cbea4f0ae9eb
+1	453	1695656290359184151	CMakeFiles/exercice1.dir/exercice1/Visage.cpp.o	446f99c80393e0cf
