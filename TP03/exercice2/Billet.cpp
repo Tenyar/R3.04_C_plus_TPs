@@ -16,9 +16,8 @@ float Billet::getPrix() const{
     return ((float)m_trajet.getDistance() * m_tarif.getPrixAuKm());
 }
 
-    ostream &operator<<(ostream &sortie,  const Billet & billet) {
-    sortie << billet.m_trajet << endl
-           << billet.m_tarif << endl
-           << "Prix du billet " << billet.getPrix() << "€" << endl;
-    return sortie;
+ostream &operator<<(ostream &sortie,  const Billet & billet) {
+    return sortie << billet.getTarif() << endl
+                  << billet.getTrajet() << endl
+                  << "Prix du billet " << billet.getPrix() << "€" << endl;
 }

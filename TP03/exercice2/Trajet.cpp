@@ -31,6 +31,6 @@ int Trajet::getDistance() const {
 }
 
 std::ostream &operator<<(std::ostream &sortie, const Trajet &trajet) {
-    return cout << trajet.getVilleDepart() << " -> " << trajet.getVilleArrivee() << " (" << trajet.getDistance()
+    return sortie << trajet.getVilleDepart() << " -> " << trajet.getVilleArrivee() << " (" << trajet.getDistance()
                 << " km)";
 }
