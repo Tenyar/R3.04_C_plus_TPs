@@ -1,3 +1,0 @@
-"C:\Users\theno\AppData\Local\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\exercice3.dir/objects.a
-C:\Users\theno\AppData\Local\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\exercice3.dir/objects.a @CMakeFiles\exercice3.dir\objects1.rsp
-C:\Users\theno\AppData\Local\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\exercice3.dir/objects.a -Wl,--no-whole-archive -o exercice3.exe -Wl,--out-implib,libexercice3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\exercice3.dir\linkLibs.rsp

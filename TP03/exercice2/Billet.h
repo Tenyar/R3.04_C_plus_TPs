@@ -17,6 +17,8 @@ public:
 
     const Tarif & getTarif() const;
 
+    virtual ostream & afficher(ostream & sortie, const Billet & billet) const;
+
     /*
      * When returning by value the constant has no effect as it cannot be enforced anyway.
      * Some compilers issue a warning.

@@ -12,9 +12,13 @@ const Promotion & BilletReduit::getPromotion() const{
     return this->m_promo;
 }
 
-ostream &operator<<(ostream &sortie,  const BilletReduit & billet_red) {
+ostream & BilletReduit::afficher(ostream & sortie, const BilletReduit & billet_red) const{
     return sortie << billet_red.getTarif() << endl
                   << billet_red.getTrajet() << endl
                   << billet_red.getPromotion() << endl
                   << "Prix du billet " << billet_red.getPrix() << "€" << endl;
+}
+
+ostream &operator<<(ostream &sortie,  const BilletReduit & billet_red) {
+    return billet_red.afficher(sortie, billet_red);
 }
