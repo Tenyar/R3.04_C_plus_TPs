@@ -12,10 +12,7 @@ public:
 
     const Promotion & getPromotion() const;
 
-    ostream & afficher(ostream & sortie, const BilletReduit & billet_red) const;
-    // Comment permettre à des enfants de classe d'avoir des opérateurs '<<' etc.. propre à aux et n'utilisant pas celui de leur parent :
-    // https://www.learncpp.com/cpp-tutorial/printing-inherited-classes-using-operator/#google_vignette
-    friend ostream &operator<<(ostream &sortie, const BilletReduit & billetReduit);
+    void afficher(ostream & sortie) const;
 private:
 const Promotion & m_promo;
 };

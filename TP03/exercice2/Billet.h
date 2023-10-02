@@ -17,7 +17,7 @@ public:
 
     const Tarif & getTarif() const;
 
-    virtual ostream & afficher(ostream & sortie, const Billet & billet) const;
+    virtual void afficher(ostream & sortie) const;
 
     /*
      * When returning by value the constant has no effect as it cannot be enforced anyway.
@@ -27,11 +27,13 @@ public:
      */
     virtual float getPrix() const; // virtual for polymorpishm
 
+    // Comment permettre à des enfants de classe d'avoir des opérateurs '<<' etc.. propre à aux et n'utilisant pas celui de leur parent :
+    // https://www.learncpp.com/cpp-tutorial/printing-inherited-classes-using-operator/#google_vignette
     // fonction amie : aura accès aux attributs "private"  de la classe Visage (pour éviter d'écrire les getters)
     // attention ce n'est pas une méthode !
     friend ostream &operator<<(ostream &sortie, const Billet & billet);
 private:
-    Trajet const & m_trajet;
-    Tarif const & m_tarif;
+    const Trajet & m_trajet;
+    const Tarif & m_tarif;
 };
 #endif

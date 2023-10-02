@@ -5,20 +5,16 @@ using namespace std;
 BilletReduit::BilletReduit(Trajet &untrajet, Tarif &untarif, const Promotion &promo) : Billet(untrajet, untarif), m_promo(promo) {}
 
 float BilletReduit::getPrix() const{
-    return (m_promo.calculePrixReduit((float)getTrajet().getDistance() * getTarif().getPrixAuKm()));
+    // return (m_promo.calculePrixReduit((float)getTrajet().getDistance() * getTarif().getPrixAuKm()));
+    return (m_promo.calculePrixReduit(Billet::getPrix()));
 }
 
 const Promotion & BilletReduit::getPromotion() const{
     return this->m_promo;
 }
 
-ostream & BilletReduit::afficher(ostream & sortie, const BilletReduit & billet_red) const{
-    return sortie << billet_red.getTarif() << endl
-                  << billet_red.getTrajet() << endl
-                  << billet_red.getPromotion() << endl
-                  << "Prix du billet " << billet_red.getPrix() << "€" << endl;
-}
-
-ostream &operator<<(ostream &sortie,  const BilletReduit & billet_red) {
-    return billet_red.afficher(sortie, billet_red);
+// Pas besoin de redéfinir '<<' sachant que la fonction virtual afficher sera appeler dedans.
+void BilletReduit::afficher(std::ostream & sortie) const {
+    Billet::afficher(sortie); // on appelle le afficher de la classe mère
+    sortie << "- Promo  : " << getPromotion() << " €" << endl;
 }

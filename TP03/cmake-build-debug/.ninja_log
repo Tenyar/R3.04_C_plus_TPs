@@ -1,0 +1,11 @@
+# ninja log v5
+12	376	7179837321589359	CMakeFiles/exercice2.dir/exercice2/BilletReduit.cpp.obj	c0985eea3d8f617e
+9	380	7179837321589359	CMakeFiles/exercice2.dir/exercice2/Billet.cpp.obj	3dea2fa77daad1a5
+0	396	7179837321788668	CMakeFiles/exercice2.dir/exercice2/Trajet.cpp.obj	a11c5fe2185d6d58
+16	397	7179837321809350	CMakeFiles/exercice2.dir/exercice2/Promotion.cpp.obj	2781c02b5091806c
+5	401	7179837321832335	CMakeFiles/exercice2.dir/exercice2/Tarif.cpp.obj	eeb006a25e452695
+20	671	7179837324553057	CMakeFiles/exercice2.dir/exercice2/exercice2.cpp.obj	1575c8f1cebb3419
+672	807	7179837325897695	exercice2.exe	a6012522149476df
+3	375	7179842311093300	CMakeFiles/exercice2.dir/exercice2/BilletReduit.cpp.obj	c0985eea3d8f617e
+8	376	7179842311103467	CMakeFiles/exercice2.dir/exercice2/Billet.cpp.obj	3dea2fa77daad1a5
+376	498	7179842312301319	exercice2.exe	a6012522149476df

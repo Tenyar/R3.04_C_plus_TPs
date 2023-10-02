@@ -16,12 +16,21 @@ float Billet::getPrix() const{
     return ((float)m_trajet.getDistance() * m_tarif.getPrixAuKm());
 }
 
-ostream & Billet::afficher(ostream & sortie, const Billet & billet) const{
-    return sortie << billet.getTarif() << endl
-                  << billet.getTrajet() << endl
-                  << "Prix du billet " << billet.getPrix() << "€" << endl;
+void Billet::afficher(ostream & sortie) const{
+   /*
+    sortie << "Billet : " << endl
+              << getTarif() << endl
+              << getTrajet() << endl
+              << "Prix du billet " << getPrix() << "€" << endl;
+   */
+
+    sortie << "Billet : "    << endl
+           << " - Trajet : " << getTrajet() << endl
+           << " - Tarif  : " << getTarif() << endl
+           << " - Prix   : " << getPrix() << " €" << endl;
 }
 
 ostream &operator<<(ostream &sortie, const Billet & billet) {
-    return billet.afficher(sortie, billet);
+    billet.afficher(sortie); // Mettre en sortie l'affichage du billet dans "sortie" le stream de sortie.
+    return sortie; // Retourner cette sortie.
 }
