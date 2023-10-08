@@ -1,14 +1,18 @@
 #include "Parametres.h"
 
 int main() {
+    // Get the Singleton instance of Parametres
+    Parametres & params = Parametres::getInstance();
     // Afficher les paramètres initiaux
-    // à compléter
+    params.afficher();
     // Instancier un thème intitulé "Urbain" et l'associer aux paramètres
-    // à compléter
+    Theme myTheme("Urbain");
+    params.setTheme(myTheme);
     // Instancier un joueur nommé "Yoloutre" et l'associer aux paramètres
-    // à compléter
+    Joueur myJoueur("Yoloutre");
+    params.setJoueur(myJoueur);
     // Afficher les nouveaux paramètres
-    // à compléter
+    params.afficher();
     return 0;
 }
 

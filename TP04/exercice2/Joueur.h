@@ -6,12 +6,15 @@
 #define JOUEUR_H
 #include <string>
 
+using namespace std;
+
 class Joueur {
 public:
-    Joueur(const std::string & intitule) : m_pseudo(intitule) {}
-    const std::string & getPseudo() const { return m_pseudo; }
+    Joueur(const string & intitule) : m_pseudo(intitule) {}
+
+    const string & getPseudo() const { return m_pseudo; }
 private:
-    std::string m_pseudo;
+    string m_pseudo;
 };
 
 #endif /* JOUEUR_H */
