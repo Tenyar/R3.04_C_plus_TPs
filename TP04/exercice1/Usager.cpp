@@ -1,7 +1,7 @@
 #include "Usager.h"
 
 // à compléter
-Usager::Usager(string login, string group) :  m_login(login), m_group(group) {}
+Usager::Usager(string login, string group) :  m_login(login), m_group(group){}
 
 const string & Usager::getLogin() const {
     return this->m_login;
@@ -17,10 +17,6 @@ void Usager::setLogin(string nouv_login) {
 
 void Usager::setGroup(string nouv_group) {
     this->m_group = nouv_group;
-}
-
-void Usager::ajoutElement(Element &e) {
-    this->m_elements.push_back(&e);
 }
 
 

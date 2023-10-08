@@ -6,15 +6,22 @@
 
 class Fichier : public Element{ // C'est une classe "feuille"
 public:
-    Fichier(const std::string & nom, const std::string & dateCreation, int tailleKo);
+    Fichier(const std::string & nom, int tailleKo, const std::string & dateCreation, Usager & usager1);
 
-    unsigned  int getTaille() override;
+    //bonus
+    string rechercher(const string & nom) override;
 
-    void afficher(std::ostream & sortie) const override;
+    unsigned  int getTaille() const override;
+
+    const std::string & getDateModificiation() const override;
+
+    void setDateModification(const string & date) override;
+
+    void afficher() const override;
 
     void ajouter(Element * element) override;
 
-    virtual ~Fichier();
+    virtual ~Fichier() override;
 
 private:
     int m_taille;

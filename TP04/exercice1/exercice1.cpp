@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Element.h"
 #include "Repertoire.h"
 #include "Fichier.h"
@@ -17,9 +18,9 @@ using namespace std;
 //  isere.xls   rhone.xls
 
 int main(int argc, char** argv) {
-    
     Usager manu("Manu", "profs");
     Usager jean("Jean", "etudiants");
+
     Element* covid = new Repertoire("COVID", manu);                          // Création répertoire COVID de Manu
     Element* stats = new Repertoire("STATS", jean);                          // Création répertoire STATS de Jean
     covid->ajouter(stats);                                                   // Ajout répertoire STATS au répertoire COVID
@@ -39,16 +40,16 @@ int main(int argc, char** argv) {
     discours->afficher();  // Affichage fichier discours.doc
     decisions->afficher(); // Affichage dossier DECISIONS
 
-    // Facultatif
-    // string chemin = covid->rechercher("isere.xls");
-    // cout << "Recherche de isere.xls dans COVID : "
-    //      << ((chemin != "") ? chemin : "non trouvé?") << endl;
-    // chemin = covid->rechercher("DECISIONS");
-    // cout << "Recherche de DECISIONS dans COVID : "
-    //      << ((chemin != "") ? chemin : "non trouvé?") << endl;
-    // chemin = covid->rechercher("drome.xls");
-    // cout << "Recherche de drome.xls dans COVID : "
-    //      << ((chemin != "") ? chemin : "non trouvé?") << endl;
+//     Facultatif
+     string chemin = covid->rechercher("isere.xls");
+     cout << "Recherche de isere.xls dans COVID : "
+          << ((chemin != "") ? chemin : "non trouve?") << endl;
+     chemin = covid->rechercher("DECISIONS");
+     cout << "Recherche de DECISIONS dans COVID : "
+          << ((chemin != "") ? chemin : "non trouve?") << endl;
+     chemin = covid->rechercher("drome.xls");
+     cout << "Recherche de drome.xls dans COVID : "
+          << ((chemin != "") ? chemin : "non trouve?") << endl;
     return 0;
 }
 

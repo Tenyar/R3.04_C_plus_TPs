@@ -5,27 +5,32 @@
 #include <ostream>
 #include <vector>
 
+using namespace std;
+
 class Repertoire : public Element{
     // C'est une classe "composée" (composite)
 public:
     Repertoire(const std::string & nom, Usager & usager);
 
-    unsigned  int getTaille() override;
+    //bonus
+    string rechercher(const string & nom) override;
 
-    const std::string & getDateModificiation() override;
+    unsigned  int getTaille() const override;
+
+    const std::string & getDateModificiation() const override;
+
+    void setDateModification(const string & date) override;
+
+    void afficher() const override;
 
     void ajouter(Element * e) override;
 
-    void afficher(std::ostream & sortie) const override;
-
-    virtual ~Repertoire();
+    ~Repertoire() override;
 
 private:
-    string dateModification;
-    Usager m_usager;
+    string m_dateCreation;
     int m_taille;
     std::vector<Element *> m_contenu; // le conteneur d'éléments : un vecteur
 };
 
 #endif /* REPERTOIRE_H */
-
