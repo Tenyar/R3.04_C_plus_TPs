@@ -24,7 +24,7 @@ protected: // un utilisateur de la classe Singleton ne pourra pas instancier lui
     Parametres(const string & intituleTheme = "Par Defaut");
 private:
     static Parametres* m_instance;
-    Theme * m_theme;
+    Theme m_theme;
     Joueur * m_joueur;
 };
 

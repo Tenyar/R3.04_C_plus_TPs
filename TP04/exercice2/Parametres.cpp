@@ -6,21 +6,16 @@
 #include <iostream>
 using namespace std;
 
-Parametres::Parametres(const string & intituleTheme){
-    m_theme = new Theme(intituleTheme);
+Parametres::Parametres(const string & intituleTheme) : m_theme(intituleTheme), m_joueur(nullptr){
     m_instance = this;
-    m_joueur = nullptr;
 }
 
 const Theme & Parametres::getTheme() const{
-    return *this->m_theme;
+    return this->m_theme;
 }
 
 void Parametres::setTheme(Theme & myTheme){
-    if (m_theme != nullptr) {
-        delete m_theme;  // Deallocate the previous Theme object
-    }
-    this->m_theme = new Theme(myTheme);  // Allocate memory for the new Theme object and copy it
+    this->m_theme = myTheme;  // Allocate memory for the new Theme object and copy it
 }
 
 const Joueur * Parametres::getJoueur() const{
@@ -28,17 +23,21 @@ const Joueur * Parametres::getJoueur() const{
 }
 
 void Parametres::setJoueur(Joueur & myJoueur){
+    /*
+     * If the set is doing dynamic allocation.
     if (m_joueur != nullptr){
         delete m_joueur; // Deallocate the previous Theme object
     }
-    this->m_joueur = new Joueur(myJoueur); // Allocate memory for the new Theme object and copy it
+     this->m_joueur = new Joueur(myJoueur);
+     */
+    this->m_joueur = & myJoueur; // Allocate memory for the new Theme object and copy it
 }
 
 
 void Parametres::afficher() {
     // flush the output buffer immediately, preventing any additional line breaks or buffering of output.
     cout << "Parametres" << " --> {"
-    << "-Theme: '" << this->m_theme->getIntitule() << "', "
+    << "-Theme: '" << this->m_theme.getIntitule() << "', "
     << " Joueur: " << flush;
     if (m_joueur != nullptr) {
         cout << "'" << this->m_joueur->getPseudo() << "'}"<< endl;
