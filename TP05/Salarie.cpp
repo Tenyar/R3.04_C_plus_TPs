@@ -1,6 +1,6 @@
 #include "Salarie.h"
 #include "SalarieException.h"
-#include <ctype.h>
+#include <cctype>
 #include <map>
 #include <limits>
 #include <string>
@@ -28,68 +28,114 @@ Salarie::Salarie(const string &nom, const string &numeroSS, const float &salaire
 
 }
 
-const string Salarie::getNom() const {
-    this->m_nom;
+string Salarie::getNom() const {
+    std::string result = m_nom;
+    for (char& c : result) {
+        c = std::toupper(static_cast<unsigned char>(c)); // cast to unsigned char to ensures that the function works correctly for all characters, including extended ASCII characters.
+    }
+    return result;
 }
 
 void Salarie::setNom(const string &nom) {
     if (nom.empty()){
         throw NomIncorrectException(nom);
     }
+    /* Pas très optimiser.
+    for (int i = 0; i < nom.length(); ++i) {
+        // Intervale ASCII seulement constituer de lettres.
+        if ((nom[i] < 48 && nom[i] > 57) || (nom[i] < 65 && nom[i] > 90 || (nom[i] < 97 && nom[i] > 122))){
+            throw NomIncorrectException(nom);
+        }
+    }
+     */
+    for (char c : nom) {
+        if (!isalpha(c)) { // de la libraire ctype.h ou cctype : vérifie si le caractère fait partie de l'alphabet.
+            throw NomIncorrectException(nom);
+        }
+    }
+
     this->m_nom = nom;
 }
 
-const string Salarie::getNumeroSS() const {
+string Salarie::getNumeroSS() const {
     return this->m_numeroSS;
 }
 
 void Salarie::setNumeroSS(const string &numeroSS) {
+    if (numeroSS.length() < 13){
+        throw NumeroIncorrectException(numeroSS);
+    }
+    for (char c : numeroSS) {
+        if (!isdigit(c)){
+            throw NumeroIncorrectException(numeroSS);
+        }
+    }
     this->m_numeroSS = numeroSS;
 }
 
 const float Salarie::getSalaireMensuel() const {
-    return this->m_salaireMensuel;
+    return this->m_salaireMensuel.getVal();
 }
 
-void Salarie::setSalaireMensuel(const ObjetContraint<float> & salaireMensuel) {
-    this->m_salaireMensuel = salaireMensuel;
+void Salarie::setSalaireMensuel(const float & salaireMensuel) {
+    if (salaireMensuel < SMIC || salaireMensuel > (SMIC * COEFF_SMIC)){
+        throw SalaireIncorrectException(salaireMensuel); // si le salaire n’est pas dans la fourchette autorisée.
+    }
+    ObjetContraint<float> salaireM(salaireMensuel, SMIC, SMIC * COEFF_SMIC);
+    this->m_salaireMensuel = salaireM;
 }
 
 const float Salarie::getImpot() const{
     // Iterator pour parcourir toute les clés/valeurs dans la map.
     map<const float, float>::const_iterator iterator = TRANCHES_IMPOT.begin();
     // compare toutes les possibilités de salaires
-    while (this->m_salaireMensuel * 12 > iterator->first){ // tant que le salaire annuel (salaireMensuel*12) est supérieure à un palier de salaire annuel
+    float salaireAnnuel = (getSalaireMensuel() * 12);
+    while (salaireAnnuel > iterator->first){ // tant que le salaire annuel (salaireMensuel*12) est supérieure à un palier de salaire annuel
         iterator++; // On continue
     }
+    iterator--; // Since we check at an index further from the result.
+
     return iterator->second; // Accède à la valeur de l'élément pointé par iterator. [First = clé, Second = valeur]
 }
 
 void Salarie::saisir(istream &entree) {
+
+    // variables
     string nom;
+    string numeroSS;
+    float salair;
+
     cout << "saisir le nom: " << flush;
     entree >> nom;
     try{
         this->setNom(nom);
     }catch (SalarieException * e){
-        cout << "Exception : " << e->what() << "\n";
+        cout << "Exception : " << e->what() << "\n" << endl;
     }
 
-    string numeroSS;
     cout << "saisir le numeroSS: " << flush;
     entree >> numeroSS;
     try{
         this->setNumeroSS(numeroSS);
     }catch (SalarieException * e){
-        cout << "Exception : " << e->what() << "\n";
+        cout << "Exception : " << e->what() << "\n" << endl;
     }
 
-    ObjetContraint<float> salairMensuel();
     cout << "saisir le salaire mensuel: " << flush;
-    entree >> salairMensuel;
+    entree >> salair;
+
+    try{
+        this->setSalaireMensuel(salair);
+    }catch (SalarieException * e){
+        cout << "Exception : " << e->what() << "\n" << endl;
+    }
 }
 
 const void Salarie::afficher(ostream &sortie) const {
-    return;
+    sortie << "--------- Impôts salarié(e) ---------"
+           << "Nom : " << this->getNom() << endl
+           << "Numero SS : " << this->getNumeroSS() << endl
+           << "Salaire Mensuel : " << this->getSalaireMensuel() << endl
+           << "Impôts Annuel : " << this->getImpot();
 }
 

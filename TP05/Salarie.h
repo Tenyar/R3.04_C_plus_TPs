@@ -14,17 +14,17 @@ public:
     // A COMPLETER : Spécifier les méthodes d'instance d'un Salarie
     Salarie(const string & nom = NOM_DEF,const string & numeroSS = NUMERO_SS_DEF,const float & salaire = SMIC);
 
-    const string getNom() const;
+    string getNom() const;
 
     void setNom(const string & nom);
 
-    const string getNumeroSS() const;
+    string getNumeroSS() const;
 
     void setNumeroSS(const string & nom);
 
     const float getSalaireMensuel() const;
 
-    void setSalaireMensuel(const ObjetContraint<float> & salaireMensuel);
+    void setSalaireMensuel(const float & salaireMensuel);
 
     const float getImpot() const;
 

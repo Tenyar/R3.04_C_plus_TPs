@@ -15,7 +15,7 @@ public:
     }
 
 protected: // User can't make an instance of this class.
-    SalarieException();
+    SalarieException() : std::domain_error("Le salarié a comporté une erreur.") {}; // domain_error doesn't have a default constructor, and you need to pass an error message to its constructor
 };
 
 class NomIncorrectException : public SalarieException {
@@ -40,8 +40,8 @@ public:
 
 class SalaireIncorrectException : public SalarieException{
 public:
-    ObjetContraint<float> m_salaire;
-    SalaireIncorrectException(ObjetContraint<float> salaire) : m_salaire(salaire){
+    float m_salaire;
+    SalaireIncorrectException(float salaire) : m_salaire(salaire){
     }
     const char * what() const noexcept override {
         return "Le salaire n’est pas dans la fourchette autorisée";
