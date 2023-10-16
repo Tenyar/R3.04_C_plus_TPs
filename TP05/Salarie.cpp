@@ -132,7 +132,7 @@ void Salarie::saisir(istream &entree) {
 }
 
 const void Salarie::afficher(ostream &sortie) const {
-    sortie << "--------- Impôts salarié(e) ---------"
+    sortie << "--------- Impôts salarié(e) ---------" << endl
            << "Nom : " << this->getNom() << endl
            << "Numero SS : " << this->getNumeroSS() << endl
            << "Salaire Mensuel : " << this->getSalaireMensuel() << endl
