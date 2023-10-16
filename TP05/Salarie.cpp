@@ -37,23 +37,17 @@ string Salarie::getNom() const {
 }
 
 void Salarie::setNom(const string &nom) {
-    if (nom.empty()){
+    // Création d'un booléan
+    bool erreur = false;
+    // Parcours tout les caractères du nom
+    for (int i = 0; !erreur && i < nom.size(); i++) {
+        // Si le caractère n'est pas de l'alphabet et est pas égal à un '-' alors erreur == true.
+        erreur = (!isalpha(nom[i]) && nom[i] != '-');
+    }
+    // Si l'erreur est vrai ou le nom est vide ou un tiret est au début ou à la fin du nom.
+    if (erreur || nom.empty() || nom[0]=='-' || nom[nom.size()-1]=='-')
+        // Lance l'erreur Nom incorrect
         throw NomIncorrectException(nom);
-    }
-    /* Pas très optimiser.
-    for (int i = 0; i < nom.length(); ++i) {
-        // Intervale ASCII seulement constituer de lettres.
-        if ((nom[i] < 48 && nom[i] > 57) || (nom[i] < 65 && nom[i] > 90 || (nom[i] < 97 && nom[i] > 122))){
-            throw NomIncorrectException(nom);
-        }
-    }
-     */
-    for (char c : nom) {
-        if (!isalpha(c)) { // de la libraire ctype.h ou cctype : vérifie si le caractère fait partie de l'alphabet.
-            throw NomIncorrectException(nom);
-        }
-    }
-
     this->m_nom = nom;
 }
 
