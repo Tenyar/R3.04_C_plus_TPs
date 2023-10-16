@@ -59,6 +59,9 @@ void Salarie::setNumeroSS(const string &numeroSS) {
     if (numeroSS.length() < 13){
         throw NumeroIncorrectException(numeroSS);
     }
+    else if (numeroSS[0] < '1' | numeroSS[0] > '2'){
+        throw NumeroIncorrectException(numeroSS);
+    }
     for (char c : numeroSS) {
         if (!isdigit(c)){
             throw NumeroIncorrectException(numeroSS);
@@ -87,9 +90,8 @@ const float Salarie::getImpot() const{
     while (salaireAnnuel > iterator->first){ // tant que le salaire annuel (salaireMensuel*12) est supérieure à un palier de salaire annuel
         iterator++; // On continue
     }
-    iterator--; // Since we check at an index further from the result.
 
-    return iterator->second; // Accède à la valeur de l'élément pointé par iterator. [First = clé, Second = valeur]
+    return salaireAnnuel * iterator->second; // Accède à la valeur de l'élément pointé par iterator. [First = clé, Second = valeur]
 }
 
 void Salarie::saisir(istream &entree) {
