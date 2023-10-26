@@ -47,6 +47,12 @@ Groupe::Groupe(const Groupe& group){
 }
 
 Groupe& Groupe::operator=(const Groupe& group){
+    // Libère la mémoire ainsi que ce qu'il y avait dedans avant de faire un clear sûre.
+    for (int i = 0; i < m_effectif.size(); ++i) {
+        delete this->m_effectif[i];
+    }
+    this->m_effectif.clear();
+
     // On duplique les personnes du groupe affecter à l'objet courant qui 'subis' l'affectation.
     for (int i = 0; i < group.m_effectif.size(); ++i) {
         this->addPersonne(group.m_effectif.at(i)->getNom());
